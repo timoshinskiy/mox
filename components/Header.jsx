@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {useNavigate} from "react-router";
-import Modal from "./Modal.jsx";
 import AuthModal from "./AuthModal.jsx";
 import {useSelector} from "react-redux";
 
@@ -15,7 +14,7 @@ const Header = () => {
                 {
                     user.auth === true
                         ?
-                        <button onClick={() => navigate('/profile')}>{user.firstname||"Profile"}</button>
+                        <button onClick={() => navigate('/profile')}>{user.first_name||"Profile"}</button>
                         :
                         <button onClick={() => setOpenModal(true)}>Login</button>
                 }

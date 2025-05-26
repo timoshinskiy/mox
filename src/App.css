@@ -3,6 +3,7 @@ body{
     padding:0;
     width:100%;
     height:100%;
+    background-color: lightgrey;
 }
 .header-container{
     top:0;
@@ -58,7 +59,7 @@ body{
 }
 .modal-content{
     margin-top: 40px;
-    padding: 3% 5%;
+    padding: 1.5% 5%;
     overflow-y: auto;
 }
 .modal-content h2{
@@ -71,6 +72,10 @@ body{
     font-size: 24px;
     color: grey;
     cursor: default;
+    transition: 0.5s;
+}
+.modal-close-icon:hover{
+    color:blue;
 }
 .auth-inputs{
     display: flex;
@@ -78,6 +83,7 @@ body{
 }
 .auth-inputs input{
     margin-bottom: 50px;
+    padding-left: 1%;
     font-size: 21px;
     border:none;
     border-bottom: 1px solid grey;
@@ -92,34 +98,30 @@ body{
     margin-bottom: 15px;
     font-size: 16px;
 }
-.auth-buttons {
-    display: flex;
-    flex-direction: row;
-    column-gap: 125px;
-}
-.auth-buttons button{
+.auth-change-button{
     background: none;
     border: none;
     font-size: 24px;
     transition: 1s;
 
 }
-.auth-buttons button:hover{
+.auth-change-button:hover{
     text-decoration: underline;
     color: blue;
 }
-.auth-buttons button.active{
+.auth-enter-button{
+    border: none;
     border-radius: 18px;
+    font-size: 26px;
     background-color: dodgerblue;
     color: white;
-    padding: 5%;
+    padding: 3%;
     transition: 1s;
 }
-.auth-buttons button.active:hover{
+.auth-enter-button:hover{
     border-radius: 18px;
     background-color: blue;
     color: white;
-    padding: 5%;
 }
 
 @media(max-width: 1200px){
@@ -133,20 +135,12 @@ body{
     .modal-content h2{
         margin-bottom: 40px;
     }
-    .auth-buttons{
-        margin-top: 25px;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-    }
-    .auth-buttons button{
-        font-size: 21px;
-
-    }
 }
-.profile_page{
-    margin-top: 5%;
+.page{
     margin-left: 5%;
+    width:90%;
+}
+.profile-page{
     display: grid;
     grid-template-columns: 8fr 2fr;
 }
@@ -156,5 +150,99 @@ body{
     column-gap: 20px;
     align-items: center;
     justify-content: center;
-    border: 1px solid dimgrey;
+    background-color: lightgrey;
+}
+.loader-back{
+    position: fixed;
+    display: flex;
+    z-index: 98;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.loader {
+
+    z-index:99;
+    width: 10%;
+    height: 15%;
+    position: relative;
+    border: 5px solid black;
+    border-radius: 8px;
+}
+.loader::before {
+    content: '';
+    position: absolute;
+    border: 5px solid black;
+    width: 32px;
+    height: 28px;
+    border-radius: 50% 50% 0 0;
+    left: 50%;
+    top: 0;
+    transform: translate(-50% , -100%)
+
+}
+.loader::after {
+    content: '';
+    position: absolute;
+    transform: translate(-50% , -50%);
+    left: 50%;
+    top: 50%;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: black;
+    box-shadow: 16px 0 black, -16px 0 black;
+    animation: flash 0.5s ease-out infinite alternate;
+}
+
+@keyframes flash {
+    0% {
+        background-color: rgba(0, 0, 0, 0.25);
+        box-shadow: 16px 0 rgba(0, 0, 0, 0.25), -16px 0 rgba(0, 0, 0, 1);
+    }
+    50% {
+        background-color: rgba(0, 0, 0, 1);
+        box-shadow: 16px 0 rgba(0, 0, 0, 0.25), -16px 0 rgba(0, 0, 0, 0.25);
+    }
+    100% {
+        background-color: rgba(0, 0, 0, 0.25);
+        box-shadow: 16px 0 rgba(0, 0, 0, 1), -16px 0 rgba(0, 0, 0, 0.25);
+    }
+}
+.catalog-products-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    column-gap: 1%;
+    row-gap: 15%;
+}
+.product-item{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    min-height: 10vh;
+    max-height: 30vh;
+    background-color: white;
+    border-radius: 24px;
+    padding: 3% 7%;
+    color: black;
+    border: 1px solid grey;
+}
+.product-item-buttons button{
+    margin-top: 3vh;
+    background: none;
+    min-width: 6vw;
+    min-height: 6vh;
+    border: 1px solid grey;
+    border-radius: 12px;
+    font-size: 18px;
+    transition: 1s;
+}
+.product-item-buttons button:hover{
+    background-color: grey;
+    border: 1px solid white;
+    color: white;
 }
