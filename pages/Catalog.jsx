@@ -82,10 +82,10 @@ const Catalog = () => {
                                 {item.product_desc}
                             </h3>
                             <div className="product-item-buttons">
-                                {item.ordered === false ? <button
-                                    onClick={() => orderProduct(item)}>Order</button> : item.orders_email === user.email ?
+                                {item.ordered === false ? user.email_verified===true? <button
+                                    onClick={() => orderProduct(item)}>Order</button> : <h3 style={{margin:0,marginTop:"3vh"}}>You need verify your email to take an order</h3> : item.orders_email === user.email ?
                                     <button onClick={()=> removeOrder(item)}>Drop from orders</button> :
-                                    <div>User with {item.orders_email} ordered this</div>}
+                                    <h3 style={{margin:0,marginTop:"3vh"}}>User with {item.orders_email} ordered this</h3>}
                             </div>
                         </div>
                     ))}
