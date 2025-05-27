@@ -11,7 +11,7 @@ const Home = () => {
         <div className={'page'}>
             <h1>Home page</h1>
             <h2>To see our catalog you need to login in your account</h2>
-            {auth===true&&<button onClick={()=>navigate('/catalog')}>Go to catalog</button>}
+            {auth===true?<button onClick={()=>navigate('/catalog')}>Go to catalog</button>:<h6>Login???</h6>}
         </div>
     );
 };

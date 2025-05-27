@@ -9,6 +9,8 @@ class actionCreator {
                 email: data.email,
                 first_name: data.first_name,
                 last_name: data.last_name,
+                admin: data.admin,
+                email_verified: data.email_verified,
             }
         })
     }

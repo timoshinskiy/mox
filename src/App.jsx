@@ -10,8 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Notfound from "../pages/Notfound.jsx";
 
 function App() {
-    const dispatch = useDispatch();
-    const {auth} = useSelector(state => state.user);
+    let {auth} = useSelector(state => state.user);
     return (
         <>
             <Header/>

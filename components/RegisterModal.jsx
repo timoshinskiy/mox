@@ -35,9 +35,9 @@ const LoginModal = (props) => {
             console.log(supabase.auth);
             const {data:_data,error:_error} = await supabase.from('users').insert({...data.user.user_metadata}).single();
             if (_error) throw _error
-            dispatch(action.login(data.user.user_metadata));
-            setLoading(false);
             toast("Confirm your mail address");
+            setTimeout(()=>dispatch(action.login(data.user.user_metadata)),300);
+            setLoading(false);
             props.setOpen(false);
         } catch (e) {
             setLoading(false);

@@ -11,6 +11,7 @@ import AuthLoader from "./AuthLoader.jsx";
 
 const LoginModal = (props) => {
     const [loading,setLoading] = useState(false);
+    const navigate = useNavigate();
     const defaultInput = {
         email:"",
         password:"",
@@ -25,10 +26,15 @@ const LoginModal = (props) => {
                 password: inputObj.password,
             })
             if(error) throw error
-            dispatch(action.login(data.user.user_metadata));
+            const {data:_data,error:_error} = await supabase.from("users").update({...data.user.user_metadata}).eq("email",data.user.user_metadata.email).select();
+            if(_error){
+                toast.error(_error.message);
+                return;
+            }
             setLoading(false);
-            toast.success('Successfully login');
             props.setOpen(false);
+            toast.success('Successfully login');
+            setTimeout(()=>dispatch(action.login(_data[0])),20);
         }
         catch (e) {
             setLoading(false);
